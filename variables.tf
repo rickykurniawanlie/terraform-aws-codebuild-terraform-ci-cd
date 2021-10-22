@@ -54,6 +54,12 @@ variable "github_app_installation_id" {
   description = "Terraform CI/CD Github App Installation ID"
 }
 
+variable "git_target_branch" {
+  type        = string
+  default     = "refs/heads/master"
+  description = "Branch reference where the CI/CD should be triggered"
+}
+
 ######
 # CI #
 ######

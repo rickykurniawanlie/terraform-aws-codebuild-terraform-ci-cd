@@ -208,10 +208,10 @@ resource "aws_codebuild_webhook" "ci" {
       pattern = "PULL_REQUEST_CREATED,PULL_REQUEST_UPDATED,PULL_REQUEST_REOPENED"
     }
 
-    # only build PRs to master
+    # only build PRs to target branch
     filter {
       type    = "BASE_REF"
-      pattern = "refs/heads/master"
+      pattern = var.git_target_branch
     }
   }
 }
@@ -301,10 +301,10 @@ resource "aws_codebuild_webhook" "cd" {
       pattern = "PUSH"
     }
 
-    # only build pushes to master
+    # only build pushes to target branch
     filter {
       type    = "HEAD_REF"
-      pattern = "refs/heads/master"
+      pattern = var.git_target_branch
     }
   }
 }
